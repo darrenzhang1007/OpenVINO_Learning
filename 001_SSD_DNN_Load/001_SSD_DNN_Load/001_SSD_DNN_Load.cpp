@@ -25,8 +25,8 @@ int main(int argc, char** argv) {
 void dnn_tf() {
 	string model = "E:/models/tf_models/ssd_mobilenet_v2_coco_2018_03_29/frozen_inference_graph.pb";
 	string config = "E:/models/tf_models/ssd_mobilenet_v2_coco_2018_03_29/graph.pbtxt";
-	
-	Mat src = imread("H:/OpenVINO_Learning/openvino_001/dog.jpg");
+
+	Mat src = imread("H:/OpenVINO_Learning/001_SSD_DNN_Load/dog.jpg");
 	imshow("src", src);
 	if (src.empty()) {
 		printf("could not load img...\n");
@@ -34,7 +34,7 @@ void dnn_tf() {
 	// load model
 	Net net = readNetFromTensorflow(model, config);
 	net.setPreferableBackend(DNN_BACKEND_INFERENCE_ENGINE); // IE 加速推断
-	//net.setPreferableBackend(DNN_BACKEND_OPENCV); // net.setPreferableBackend(DNN_BACKEND_OPENCV); // 指定计算后台
+															//net.setPreferableBackend(DNN_BACKEND_OPENCV); // net.setPreferableBackend(DNN_BACKEND_OPENCV); // 指定计算后台
 	net.setPreferableTarget(DNN_TARGET_CPU);  // 指定在什么设备上运行
 	printf("loading model...\n");
 	Mat blob = blobFromImage(src, 1.0, Size(300, 300), Scalar(), true, false, 5);
@@ -69,7 +69,7 @@ void dnn_tf() {
 }
 
 
-void dnn_ir_tf(){
+void dnn_ir_tf() {
 	string xml = "E:/models/tf_models/ssd_mobilenet_v2_coco_2018_03_29/frozen_inference_graph.xml";
 	string bin = "E:/models/tf_models/ssd_mobilenet_v2_coco_2018_03_29/frozen_inference_graph.bin";
 	Mat src = imread("H:/OpenVINO_Learning/openvino_001/dog.jpg");

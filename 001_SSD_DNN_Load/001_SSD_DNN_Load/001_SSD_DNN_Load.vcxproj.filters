@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="openvino_001.cpp">
+    <ClCompile Include="001_SSD_DNN_Load.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
